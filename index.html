@@ -1,0 +1,3293 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Bộ Tài Liệu BA – Phỏng Vấn Dynamics 365 Functional Consultant | NaviWorld
+    </title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap");
+      :root {
+        --p: #4f46e5;
+        --p2: #7c3aed;
+        --acc: #06b6d4;
+        --ok: #059669;
+        --warn: #d97706;
+        --err: #dc2626;
+        --pink: #ec4899;
+        --txt: #1e293b;
+        --muted: #64748b;
+        --border: #e2e8f0;
+        --bg: #f8fafc;
+        --white: #fff;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--txt);
+        line-height: 1.65;
+        font-size: 13px;
+      }
+      /* Cover */
+      .cover {
+        background: linear-gradient(
+          135deg,
+          #4f46e5 0%,
+          #7c3aed 45%,
+          #ec4899 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 60px 40px;
+        page-break-after: always;
+        position: relative;
+        overflow: hidden;
+      }
+      .cover::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 25% 25%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(255, 255, 255, 0.07) 0%,
+            transparent 55%
+          );
+      }
+      .cover-in {
+        position: relative;
+        z-index: 1;
+      }
+      .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #fff;
+        padding: 6px 20px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+      .cover h1 {
+        color: #fff;
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 16px;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      }
+      .cover h1 span {
+        background: linear-gradient(90deg, #fcd34d, #fde68a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .cover p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 16px;
+        margin-bottom: 40px;
+        max-width: 600px;
+      }
+      .cmeta {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cm {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        text-align: center;
+      }
+      .cm strong {
+        display: block;
+        font-size: 20px;
+        font-weight: 800;
+      }
+      /* TOC */
+      .toc {
+        background: #fff;
+        padding: 60px 80px;
+        page-break-after: always;
+        min-height: 100vh;
+      }
+      .toc-h {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--p);
+        border-bottom: 3px solid var(--p);
+        padding-bottom: 12px;
+        margin-bottom: 6px;
+      }
+      .toc-sub {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 28px;
+      }
+      .toc-sec {
+        margin-bottom: 20px;
+      }
+      .toc-sec-t {
+        font-size: 13px;
+        font-weight: 700;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+      }
+      .toc-row {
+        display: flex;
+        align-items: center;
+        padding: 6px 16px;
+        gap: 10px;
+        font-size: 12px;
+        color: var(--txt);
+        border-radius: 6px;
+      }
+      .toc-num {
+        font-weight: 700;
+        color: var(--p);
+        min-width: 26px;
+      }
+      .toc-dot {
+        flex: 1;
+        border-bottom: 1px dotted #cbd5e1;
+        height: 1px;
+      }
+      .toc-pn {
+        color: var(--muted);
+        font-weight: 600;
+      }
+      /* Chapter */
+      .ch {
+        page-break-before: always;
+        padding: 0;
+      }
+      .ch-hd {
+        padding: 44px 70px 28px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .ch-num {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .ch-info h2 {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--txt);
+        margin-bottom: 4px;
+      }
+      .ch-info p {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .ch-body {
+        padding: 0 70px 60px;
+      }
+      /* Cards */
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 22px;
+        margin-bottom: 18px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        break-inside: avoid;
+      }
+      .ct {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ci {
+        width: 26px;
+        height: 26px;
+        border-radius: 7px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+      /* Grids */
+      .g2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .g3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+      /* Theory / Example split */
+      .te {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin-bottom: 18px;
+        break-inside: avoid;
+      }
+      .th-s {
+        background: #f0f4ff;
+        padding: 20px 22px;
+        border-right: 1px solid var(--border);
+      }
+      .ex-s {
+        background: #fffbf0;
+        padding: 20px 22px;
+      }
+      .sl {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .th-lbl {
+        color: var(--p);
+      }
+      .ex-lbl {
+        color: var(--warn);
+      }
+      .st {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      /* Tags */
+      .tag {
+        display: inline-block;
+        padding: 2px 9px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 600;
+        margin: 2px;
+      }
+      .tb {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+      .tg {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .ty {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .tr {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .tp {
+        background: #ede9fe;
+        color: #5b21b6;
+      }
+      .tk {
+        background: #fce7f3;
+        color: #9d174d;
+      }
+      .tc {
+        background: #cffafe;
+        color: #155e75;
+      }
+      .to {
+        background: #ffedd5;
+        color: #9a3412;
+      }
+      /* Lists */
+      ul.cl {
+        list-style: none;
+      }
+      ul.cl li {
+        padding: 3px 0 3px 20px;
+        position: relative;
+        font-size: 12px;
+      }
+      ul.cl li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--ok);
+        font-weight: 700;
+      }
+      ul.al {
+        list-style: none;
+      }
+      ul.al li {
+        padding: 3px 0 3px 20px;
+        position: relative;
+        font-size: 12px;
+      }
+      ul.al li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--p);
+        font-weight: 700;
+      }
+      ul.dl {
+        list-style: none;
+      }
+      ul.dl li {
+        padding: 3px 0 3px 14px;
+        position: relative;
+        font-size: 12px;
+      }
+      ul.dl li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--p);
+        font-weight: 700;
+      }
+      /* Tables */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+        margin-top: 6px;
+      }
+      th {
+        background: var(--p);
+        color: #fff;
+        padding: 8px 11px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 11px;
+      }
+      td {
+        padding: 7px 11px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      tr:nth-child(even) td {
+        background: #f8fafc;
+      }
+      /* Callouts */
+      .co {
+        border-radius: 9px;
+        padding: 12px 14px;
+        margin: 10px 0;
+        display: flex;
+        gap: 9px;
+        align-items: flex-start;
+        break-inside: avoid;
+      }
+      .co-i {
+        font-size: 15px;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .co-b {
+        flex: 1;
+      }
+      .co-t {
+        font-weight: 700;
+        font-size: 11px;
+        margin-bottom: 3px;
+      }
+      .co-tx {
+        font-size: 12px;
+        line-height: 1.55;
+      }
+      .co-bl {
+        background: #eff6ff;
+        border-left: 3px solid #3b82f6;
+      }
+      .co-bl .co-t {
+        color: #1d4ed8;
+      }
+      .co-gr {
+        background: #f0fdf4;
+        border-left: 3px solid #22c55e;
+      }
+      .co-gr .co-t {
+        color: #15803d;
+      }
+      .co-ye {
+        background: #fffbeb;
+        border-left: 3px solid #f59e0b;
+      }
+      .co-ye .co-t {
+        color: #b45309;
+      }
+      .co-re {
+        background: #fff1f2;
+        border-left: 3px solid #f43f5e;
+      }
+      .co-re .co-t {
+        color: #be123c;
+      }
+      .co-pu {
+        background: #f5f3ff;
+        border-left: 3px solid #8b5cf6;
+      }
+      .co-pu .co-t {
+        color: #6d28d9;
+      }
+      /* Flow */
+      .flow {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex-wrap: wrap;
+        margin: 9px 0;
+      }
+      .fi {
+        background: var(--p);
+        color: #fff;
+        padding: 5px 13px;
+        border-radius: 7px;
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .fa {
+        color: var(--muted);
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+      /* Divider */
+      .div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 22px 0 14px;
+      }
+      .div-t {
+        font-size: 14px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .div-l {
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(to right, var(--border), transparent);
+        border-radius: 1px;
+      }
+      /* Code */
+      pre {
+        font-family: "Fira Code", monospace;
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 14px;
+        border-radius: 8px;
+        font-size: 11px;
+        overflow-x: auto;
+        margin: 7px 0;
+        line-height: 1.7;
+      }
+      pre .kw {
+        color: #c084fc;
+      }
+      pre .fn {
+        color: #93c5fd;
+      }
+      pre .str {
+        color: #86efac;
+      }
+      pre .num {
+        color: #fcd34d;
+      }
+      pre .cm {
+        color: #64748b;
+      }
+      /* RACI */
+      .ra-r {
+        color: #dc2626;
+        font-weight: 700;
+      }
+      .ra-a {
+        color: #d97706;
+        font-weight: 700;
+      }
+      .ra-c {
+        color: #2563eb;
+        font-weight: 700;
+      }
+      .ra-i {
+        color: #64748b;
+        font-weight: 700;
+      }
+      /* Q&A */
+      .qa {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 14px;
+        break-inside: avoid;
+      }
+      .qa-q {
+        background: linear-gradient(135deg, var(--p), var(--p2));
+        color: #fff;
+        padding: 13px 18px;
+        font-weight: 600;
+        font-size: 13px;
+        display: flex;
+        gap: 9px;
+        align-items: flex-start;
+      }
+      .qa-b {
+        background: rgba(255, 255, 255, 0.22);
+        padding: 1px 7px;
+        border-radius: 4px;
+        font-size: 10px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .qa-a {
+        padding: 14px 18px;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .qa-ex {
+        background: #fffbf0;
+        border-top: 1px solid #fef3c7;
+        padding: 11px 18px;
+        font-size: 12px;
+      }
+      .qa-exl {
+        font-weight: 700;
+        color: var(--warn);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+      }
+      /* Project card */
+      .proj {
+        background: linear-gradient(135deg, #1e293b, #334155);
+        color: #fff;
+        border-radius: 14px;
+        padding: 26px;
+        margin-bottom: 18px;
+        break-inside: avoid;
+      }
+      .proj h3 {
+        font-size: 19px;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+      .proj .sub {
+        color: #94a3b8;
+        font-size: 12px;
+        margin-bottom: 18px;
+      }
+      .ps {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 11px 14px;
+        border-radius: 9px;
+        text-align: center;
+      }
+      .psn {
+        font-size: 22px;
+        font-weight: 800;
+        color: #fcd34d;
+      }
+      .psl {
+        font-size: 10px;
+        color: #94a3b8;
+        margin-top: 2px;
+      }
+      /* blockquote */
+      blockquote {
+        border-left: 4px solid var(--p);
+        padding: 12px 18px;
+        background: #eef2ff;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        font-size: 13px;
+        color: var(--txt);
+        margin: 12px 0;
+      }
+      /* Chapter colors */
+      .c1 .ch-num {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      }
+      .c1 .ch-hd {
+        border-left: 5px solid #4f46e5;
+      }
+      .c2 .ch-num {
+        background: linear-gradient(135deg, #059669, #10b981);
+      }
+      .c2 .ch-hd {
+        border-left: 5px solid #059669;
+      }
+      .c3 .ch-num {
+        background: linear-gradient(135deg, #d97706, #f59e0b);
+      }
+      .c3 .ch-hd {
+        border-left: 5px solid #d97706;
+      }
+      .c4 .ch-num {
+        background: linear-gradient(135deg, #dc2626, #ef4444);
+      }
+      .c4 .ch-hd {
+        border-left: 5px solid #dc2626;
+      }
+      .c5 .ch-num {
+        background: linear-gradient(135deg, #0891b2, #06b6d4);
+      }
+      .c5 .ch-hd {
+        border-left: 5px solid #0891b2;
+      }
+      .c6 .ch-num {
+        background: linear-gradient(135deg, #7c3aed, #9333ea);
+      }
+      .c6 .ch-hd {
+        border-left: 5px solid #7c3aed;
+      }
+      .c7 .ch-num {
+        background: linear-gradient(135deg, #be185d, #ec4899);
+      }
+      .c7 .ch-hd {
+        border-left: 5px solid #be185d;
+      }
+      .c8 .ch-num {
+        background: linear-gradient(135deg, #065f46, #059669);
+      }
+      .c8 .ch-hd {
+        border-left: 5px solid #065f46;
+      }
+      .c9 .ch-num {
+        background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      }
+      .c9 .ch-hd {
+        border-left: 5px solid #1d4ed8;
+      }
+      .c10 .ch-num {
+        background: linear-gradient(135deg, #9a3412, #ea580c);
+      }
+      .c10 .ch-hd {
+        border-left: 5px solid #9a3412;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .ch {
+          page-break-before: always;
+        }
+        .card,
+        .qa,
+        .te {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- COVER -->
+    <div class="cover">
+      <div class="cover-in">
+        <div class="badge">📘 Interview Preparation Kit 2026</div>
+        <h1>Bộ Tài Liệu<br /><span>Business Analyst</span></h1>
+        <p>
+          Lý thuyết · Ví dụ thực tế · Khai thác Đồ án · Định hướng JD NaviWorld
+          D365
+        </p>
+        <div class="cmeta">
+          <div class="cm"><strong>10</strong>Chương chuyên sâu</div>
+          <div class="cm"><strong>D365</strong>Functional Consultant</div>
+          <div class="cm"><strong>NaviWorld</strong>Target Company</div>
+          <div class="cm"><strong>2026</strong>Phiên bản mới nhất</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-h">📋 Mục Lục</div>
+      <div class="toc-sub">
+        Tài liệu ôn tập BA — Dynamics 365 Functional Consultant tại NaviWorld
+        Vietnam
+      </div>
+      <div class="toc-sec">
+        <div
+          class="toc-sec-t"
+          style="background: linear-gradient(135deg, #4f46e5, #7c3aed)"
+        >
+          🎯 Phần I: Nền Tảng BA
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">01</span>Nền tảng Business Analyst — Vai trò, Kỹ
+          năng cốt lõi<span class="toc-dot"></span
+          ><span class="toc-pn">Tr.3</span>
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">02</span>Quy trình & SDLC — Vòng đời BA,
+          Waterfall vs Agile<span class="toc-dot"></span
+          ><span class="toc-pn">Tr.7</span>
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">03</span>Business Case & Tính Khả Thi — ROI,
+          Feasibility<span class="toc-dot"></span
+          ><span class="toc-pn">Tr.11</span>
+        </div>
+      </div>
+      <div class="toc-sec">
+        <div
+          class="toc-sec-t"
+          style="background: linear-gradient(135deg, #059669, #10b981)"
+        >
+          📊 Phần II: Phân Tích & Tài Liệu Hóa
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">04</span>Bên Liên Quan & Kỹ Thuật Khai Thác Yêu
+          Cầu<span class="toc-dot"></span><span class="toc-pn">Tr.15</span>
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">05</span>Kỹ Thuật Yêu Cầu & Tài Liệu Hóa — BRD,
+          FRD, FDD<span class="toc-dot"></span><span class="toc-pn">Tr.19</span>
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">06</span>Phân Tích Quy Trình & Mô Hình Hóa —
+          AS-IS/TO-BE<span class="toc-dot"></span
+          ><span class="toc-pn">Tr.23</span>
+        </div>
+      </div>
+      <div class="toc-sec">
+        <div
+          class="toc-sec-t"
+          style="background: linear-gradient(135deg, #d97706, #f59e0b)"
+        >
+          🔧 Phần III: Thực Hành & Kiểm Thử
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">07</span>User Stories, Ưu Tiên Hóa MoSCoW &
+          Backlog<span class="toc-dot"></span><span class="toc-pn">Tr.27</span>
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">08</span>BA trong Agile/Scrum — DoR, DoD, Nghi
+          thức<span class="toc-dot"></span><span class="toc-pn">Tr.31</span>
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">09</span>Phân Tích Dữ Liệu, UAT & Đánh Giá Giải
+          Pháp<span class="toc-dot"></span><span class="toc-pn">Tr.35</span>
+        </div>
+      </div>
+      <div class="toc-sec">
+        <div
+          class="toc-sec-t"
+          style="background: linear-gradient(135deg, #dc2626, #ef4444)"
+        >
+          🚀 Phần IV: Dự Án & Phỏng Vấn
+        </div>
+        <div class="toc-row">
+          <span class="toc-num">10</span>Khai Thác Đồ Án + Ôn Tập Phỏng Vấn
+          NaviWorld D365<span class="toc-dot"></span
+          ><span class="toc-pn">Tr.39</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH1 ============== -->
+    <div class="ch c1">
+      <div class="ch-hd">
+        <div class="ch-num">01</div>
+        <div class="ch-info">
+          <h2>Nền Tảng Business Analyst</h2>
+          <p>
+            BA là gì · Vai trò trong dự án · Kỹ năng cốt lõi · So sánh với các
+            vai trò khác
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="te">
+          <div class="th-s">
+            <div class="sl th-lbl">📘 Lý Thuyết</div>
+            <div class="st">Business Analyst là gì?</div>
+            <p style="font-size: 12px; margin-bottom: 9px">
+              BA là người <strong>cầu nối</strong> giữa nhu cầu kinh doanh và
+              giải pháp công nghệ. BA không phải người code — nhưng đảm bảo code
+              đúng thứ cần thiết.
+            </p>
+            <ul class="cl">
+              <li>Hiểu vấn đề kinh doanh thực sự</li>
+              <li>Thu thập & phân tích yêu cầu</li>
+              <li>Chuyển hóa nhu cầu thành giải pháp</li>
+              <li>Phối hợp các bên liên quan</li>
+              <li>Đảm bảo giải pháp tạo giá trị KD</li>
+            </ul>
+            <div class="co co-bl" style="margin-top: 10px">
+              <span class="co-i">💡</span>
+              <div class="co-b">
+                <div class="co-t">Tư duy BA đúng</div>
+                <div class="co-tx">
+                  Luôn hỏi <strong>"Tại sao?"</strong> trước khi hỏi
+                  <strong>"Cái gì?"</strong>. Mỗi yêu cầu phải gắn với mục tiêu
+                  kinh doanh.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ex-s">
+            <div class="sl ex-lbl">💼 Ví Dụ — Đồ Án</div>
+            <div class="st">Hệ Thống Quản Lý LMS / E-commerce</div>
+            <ul class="dl">
+              <li>
+                <strong>Vấn đề:</strong> Nhân viên xử lý đơn hàng thủ công →
+                chậm, lỗi nhiều
+              </li>
+              <li>
+                <strong>Yêu cầu thu thập:</strong> Phỏng vấn manager bán hàng,
+                kho vận, kế toán
+              </li>
+              <li>
+                <strong>Giải pháp BA đề xuất:</strong> Module quản lý đơn hàng
+                tự động với workflow phê duyệt
+              </li>
+              <li>
+                <strong>Kết quả:</strong> Giảm 70% thời gian xử lý đơn hàng
+              </li>
+            </ul>
+            <div class="co co-ye" style="margin-top: 10px">
+              <span class="co-i">⭐</span>
+              <div class="co-b">
+                <div class="co-t">Câu trả lời phỏng vấn</div>
+                <div class="co-tx">
+                  "Trong dự án đồ án, tôi đóng vai BA bằng cách phỏng vấn 5 bên
+                  liên quan, phân tích quy trình AS-IS và đề xuất TO-BE giúp
+                  giảm thời gian xử lý từ 2 ngày xuống 4 giờ."
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #eef2ff; color: #4f46e5">👥</div>
+            BA vs Các Vai Trò Khác trong Dự Án
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Vai Trò</th>
+                <th>Trọng Tâm</th>
+                <th>Câu Hỏi Chính</th>
+                <th>Sản Phẩm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tp">Business Analyst</span></td>
+                <td>Nhu cầu KD, yêu cầu, phân tích</td>
+                <td>Tại sao? Cần gì?</td>
+                <td>BRD, FRD, User Story</td>
+              </tr>
+              <tr>
+                <td><span class="tag tb">Product Owner</span></td>
+                <td>Tầm nhìn sản phẩm, ưu tiên backlog</td>
+                <td>Cái gì mang giá trị nhất?</td>
+                <td>Product Backlog, Roadmap</td>
+              </tr>
+              <tr>
+                <td><span class="tag to">Project Manager</span></td>
+                <td>Timeline, ngân sách, nguồn lực</td>
+                <td>Khi nào? Ai? Bao nhiêu tiền?</td>
+                <td>Project Plan, Risk Log</td>
+              </tr>
+              <tr>
+                <td><span class="tag tg">QA Engineer</span></td>
+                <td>Chất lượng, kiểm thử, xác thực</td>
+                <td>Có đúng yêu cầu không?</td>
+                <td>Test Case, Bug Report</td>
+              </tr>
+              <tr>
+                <td><span class="tag tc">Developer</span></td>
+                <td>Thiết kế kỹ thuật, lập trình</td>
+                <td>Làm thế nào?</td>
+                <td>Source Code, Technical Doc</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #eef2ff; color: #4f46e5">
+                🧠
+              </div>
+              Kỹ Năng Phân Tích
+            </div>
+            <ul class="cl">
+              <li>Phân tích yêu cầu & gap analysis</li>
+              <li>Tư duy hệ thống & logic</li>
+              <li>Mô hình hóa quy trình (BPMN)</li>
+              <li>Phân tích dữ liệu (SQL, Excel)</li>
+              <li>Phân tích rủi ro & tác động</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #f0fdf4; color: #059669">
+                💬
+              </div>
+              Kỹ Năng Mềm
+            </div>
+            <ul class="cl">
+              <li>Giao tiếp rõ ràng, đa cấp độ</li>
+              <li>Lắng nghe chủ động</li>
+              <li>Đàm phán & thuyết phục</li>
+              <li>Quản lý kỳ vọng</li>
+              <li>Giải quyết xung đột</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #fffbeb; color: #d97706">
+                📄
+              </div>
+              Kỹ Năng Tài Liệu Hóa
+            </div>
+            <ul class="cl">
+              <li>Viết BRD/FRD/SRS rõ ràng</li>
+              <li>Vẽ use case, flowchart</li>
+              <li>Tạo wireframe/prototype</li>
+              <li>Viết user story & acceptance criteria</li>
+              <li>Duy trì RTM (truy vết yêu cầu)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #fff1f2; color: #dc2626">
+                🔧
+              </div>
+              Kỹ Năng Kỹ Thuật (D365)
+            </div>
+            <ul class="cl">
+              <li>SQL cơ bản (query, analyze)</li>
+              <li>ERD & Data Modeling</li>
+              <li>ERP Systems (D365 BC / F&O)</li>
+              <li>Gap Analysis & FDD Writing</li>
+              <li>Tools: JIRA, Confluence, Azure DevOps</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">Q1</span>"Bạn hiểu vai trò của BA như thế nào? BA
+            khác gì PM?"
+          </div>
+          <div class="qa-a">
+            <strong>Gợi ý:</strong> "BA tập trung trả lời
+            <em>'Cần làm gì và tại sao'</em>. PM tập trung
+            <em>'Ai làm, khi nào, ngân sách bao nhiêu'</em>. BA cung cấp yêu cầu
+            rõ ràng để PM lên kế hoạch và triển khai — hai vai trò bổ trợ nhau."
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Từ đồ án</div>
+            "Trong dự án LMS của tôi, tôi đóng vai BA bằng cách phỏng vấn giảng
+            viên & sinh viên để hiểu nhu cầu thực sự, xây dựng use case và user
+            story để dev hiểu cần làm gì. PM phân công và theo dõi tiến độ."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH2 ============== -->
+    <div class="ch c2">
+      <div class="ch-hd">
+        <div class="ch-num">02</div>
+        <div class="ch-info">
+          <h2>Quy Trình Phân Tích Nghiệp Vụ & SDLC</h2>
+          <p>
+            Vòng đời BA · Waterfall vs Agile · Hoạt động BA trong từng giai đoạn
+            SDLC
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #eef2ff; color: #4f46e5">🔄</div>
+            Vòng Đời BA (BA Lifecycle)
+          </div>
+          <div class="flow" style="justify-content: center">
+            <div class="fi" style="background: #4f46e5">📋 Khởi Tạo</div>
+            <div class="fa">→</div>
+            <div class="fi" style="background: #7c3aed">🔍 Khám Phá</div>
+            <div class="fa">→</div>
+            <div class="fi" style="background: #9333ea">📊 Phân Tích</div>
+            <div class="fa">→</div>
+            <div class="fi" style="background: #ec4899">📝 Yêu Cầu</div>
+            <div class="fa">→</div>
+            <div class="fi" style="background: #f59e0b">🚀 Triển Khai</div>
+            <div class="fa">→</div>
+            <div class="fi" style="background: #059669">✅ Đánh Giá</div>
+          </div>
+          <table style="margin-top: 14px">
+            <thead>
+              <tr>
+                <th>Giai Đoạn</th>
+                <th>Hoạt Động BA</th>
+                <th>Sản Phẩm Bàn Giao</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tp">Khởi Tạo</span></td>
+                <td>Xác định vấn đề, Business Case, phạm vi, bên liên quan</td>
+                <td>Project Charter, Stakeholder List</td>
+              </tr>
+              <tr>
+                <td><span class="tag tb">Khám Phá</span></td>
+                <td>Khai thác nhu cầu, hiểu hiện trạng, thu thập thông tin</td>
+                <td>Interview Notes, AS-IS Process</td>
+              </tr>
+              <tr>
+                <td><span class="tag tc">Phân Tích</span></td>
+                <td>Phân tích yêu cầu, định nghĩa, mô hình hóa, xác thực</td>
+                <td>BRD, Use Case, Flowchart</td>
+              </tr>
+              <tr>
+                <td><span class="tag ty">Yêu Cầu</span></td>
+                <td>Lập tài liệu, ưu tiên hóa, tiêu chí nghiệm thu</td>
+                <td>FRD/SRS, User Stories, RTM</td>
+              </tr>
+              <tr>
+                <td><span class="tag to">Triển Khai</span></td>
+                <td>
+                  Hỗ trợ Dev, làm rõ yêu cầu, review CR, cập nhật tài liệu
+                </td>
+                <td>Change Log, UAT Plan</td>
+              </tr>
+              <tr>
+                <td><span class="tag tg">Đánh Giá</span></td>
+                <td>
+                  UAT & xác thực, đo lường KPI, phản hồi, bài học kinh nghiệm
+                </td>
+                <td>UAT Report, Lessons Learned</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="te">
+          <div class="th-s">
+            <div class="sl th-lbl">📘 Lý Thuyết</div>
+            <div class="st">Waterfall vs Agile/Scrum</div>
+            <table style="font-size: 11px">
+              <tr>
+                <th style="font-size: 10px">Tiêu Chí</th>
+                <th style="background: #3b82f6; font-size: 10px">Waterfall</th>
+                <th style="background: #10b981; font-size: 10px">Agile</th>
+              </tr>
+              <tr>
+                <td>Quy trình</td>
+                <td>Tuần tự, cứng nhắc</td>
+                <td>Lặp lại, linh hoạt</td>
+              </tr>
+              <tr>
+                <td>Tài liệu</td>
+                <td>Nặng, đầy đủ trước</td>
+                <td>Nhẹ, đủ dùng</td>
+              </tr>
+              <tr>
+                <td>Thay đổi</td>
+                <td>Khó, tốn kém</td>
+                <td>Dễ, chào đón</td>
+              </tr>
+              <tr>
+                <td>Delivery</td>
+                <td>Cuối dự án</td>
+                <td>Từng sprint (2-4 tuần)</td>
+              </tr>
+              <tr>
+                <td>Phù hợp</td>
+                <td>Dự án ổn định, rõ ràng</td>
+                <td>Dự án linh hoạt, thay đổi nhiều</td>
+              </tr>
+            </table>
+          </div>
+          <div class="ex-s">
+            <div class="sl ex-lbl">💼 Ví Dụ — Đồ Án</div>
+            <div class="st">Áp dụng Agile/Scrum</div>
+            <div class="co co-gr" style="margin-bottom: 8px">
+              <span class="co-i">✅</span>
+              <div class="co-b">
+                <div class="co-t">Nhóm dùng Scrum</div>
+                <div class="co-tx">
+                  Sprint 2 tuần, demo cuối sprint cho giảng viên hướng dẫn.
+                  Backlog ưu tiên hóa liên tục theo giá trị kinh doanh.
+                </div>
+              </div>
+            </div>
+            <div class="co co-bl">
+              <span class="co-i">💡</span>
+              <div class="co-b">
+                <div class="co-t">Câu trả lời phỏng vấn</div>
+                <div class="co-tx">
+                  "Dự án dùng Scrum với sprint 2 tuần. Tôi đóng vai BA kiêm PO,
+                  ưu tiên backlog, viết user story và xác thực kết quả sau mỗi
+                  sprint."
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #eef2ff; color: #4f46e5">📅</div>
+            Hoạt Động BA Trong SDLC — Gắn Với D365/NaviWorld
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Giai Đoạn SDLC</th>
+                <th>Hoạt Động BA</th>
+                <th>Với D365 / NaviWorld</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Lập Kế Hoạch</strong></td>
+                <td>Xác định mục tiêu, scope, stakeholders, business case</td>
+                <td>
+                  Xác định module D365 cần triển khai (Finance, Sales,
+                  Inventory...)
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Phân Tích</strong></td>
+                <td>Khai thác yêu cầu, phân tích AS-IS, gap analysis</td>
+                <td>
+                  Phỏng vấn kế toán, kho vận; map quy trình với D365 standard
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Thiết Kế</strong></td>
+                <td>Định nghĩa TO-BE, use case, wireframe, FDD</td>
+                <td>Viết FDD chi tiết cho từng tính năng D365 cần customize</td>
+              </tr>
+              <tr>
+                <td><strong>Phát Triển</strong></td>
+                <td>
+                  Hỗ trợ dev, làm rõ yêu cầu, review CR, cập nhật tài liệu
+                </td>
+                <td>
+                  Phối hợp developer tùy chỉnh D365, xác nhận logic nghiệp vụ
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Kiểm Thử</strong></td>
+                <td>Chuẩn bị UAT, hỗ trợ user kiểm thử, ghi nhận lỗi</td>
+                <td>Hướng dẫn kế toán test module Finance trong D365</td>
+              </tr>
+              <tr>
+                <td><strong>Triển Khai</strong></td>
+                <td>Hỗ trợ go-live, đào tạo user, theo dõi sau triển khai</td>
+                <td>Training user, chuẩn bị tài liệu hướng dẫn sử dụng D365</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">Q2</span>"Bạn đã làm Agile chưa? BA đóng vai gì
+            trong Scrum?"
+          </div>
+          <div class="qa-a">
+            <strong>Gợi ý:</strong> "BA trong Scrum chủ yếu hỗ trợ PO: viết và
+            ưu tiên user story, chuẩn bị Sprint Planning, giải đáp thắc mắc của
+            Dev trong sprint, tham gia Sprint Review để xác thực, và
+            Retrospective để cải tiến quy trình."
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Từ đồ án</div>
+            "Nhóm làm Scrum với sprint 2 tuần. Vai trò BA của tôi là phân tích
+            yêu cầu từ stakeholders, viết user story với acceptance criteria, ưu
+            tiên backlog cùng PO để team luôn làm đúng thứ quan trọng nhất."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH3 ============== -->
+    <div class="ch c3">
+      <div class="ch-hd">
+        <div class="ch-num">03</div>
+        <div class="ch-info">
+          <h2>Business Case & Tính Khả Thi</h2>
+          <p>
+            Xác định vấn đề · Business Case · ROI · Phân tích khả thi · Ràng
+            buộc & Giả định
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="te">
+          <div class="th-s">
+            <div class="sl th-lbl">📘 Lý Thuyết</div>
+            <div class="st">Xác Định Vấn Đề Kinh Doanh</div>
+            <p style="font-size: 12px; margin-bottom: 9px">
+              Vấn đề = khoảng cách giữa <strong>hiện trạng</strong> và
+              <strong>trạng thái mong muốn</strong>.
+            </p>
+            <ul class="al">
+              <li>Vấn đề là gì? (What)</li>
+              <li>Ai bị ảnh hưởng? (Who)</li>
+              <li>Tại sao xảy ra? (Why)</li>
+              <li>Tác động ra sao? (Impact)</li>
+            </ul>
+            <div class="co co-ye" style="margin-top: 10px">
+              <span class="co-i">⚠️</span>
+              <div class="co-b">
+                <div class="co-t">Mẹo quan trọng</div>
+                <div class="co-tx">
+                  Luôn đào sâu để tìm <strong>NGUYÊN NHÂN GỐC RỄ</strong>, không
+                  chỉ dừng ở triệu chứng. Dùng 5 Whys.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ex-s">
+            <div class="sl ex-lbl">💼 Ví Dụ — D365 Context</div>
+            <div class="st">Khách hàng NaviWorld — Công ty Phân Phối</div>
+            <ul class="dl">
+              <li>
+                <strong>Vấn đề:</strong> Quản lý kho thủ công bằng Excel, sai
+                lệch tồn kho 15%
+              </li>
+              <li>
+                <strong>Ai bị ảnh hưởng:</strong> Kho vận, Mua hàng, Kế toán,
+                Ban giám đốc
+              </li>
+              <li>
+                <strong>Tại sao:</strong> Không có hệ thống real-time, nhiều
+                file riêng lẻ
+              </li>
+              <li>
+                <strong>Tác động:</strong> Mất đơn hàng, tồn kho dư thừa, chi
+                phí tăng cao
+              </li>
+              <li>
+                <strong>Giải pháp BA:</strong> Triển khai module Inventory D365
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #fffbeb; color: #d97706">
+                📑
+              </div>
+              Cấu Trúc Business Case
+            </div>
+            <table>
+              <tr>
+                <th>Mục</th>
+                <th>Nội Dung</th>
+              </tr>
+              <tr>
+                <td><span class="tag ty">Vấn đề</span></td>
+                <td>Vấn đề là gì & tác động ra sao</td>
+              </tr>
+              <tr>
+                <td><span class="tag tb">Nhu cầu KD</span></td>
+                <td>Tại sao cần giải pháp này?</td>
+              </tr>
+              <tr>
+                <td><span class="tag tp">Giải pháp đề xuất</span></td>
+                <td>Tổng quan giải pháp ở mức cao</td>
+              </tr>
+              <tr>
+                <td><span class="tag tg">Lợi ích</span></td>
+                <td>Hữu hình và vô hình</td>
+              </tr>
+              <tr>
+                <td><span class="tag to">Chi phí</span></td>
+                <td>Triển khai + vận hành</td>
+              </tr>
+              <tr>
+                <td><span class="tag tr">Rủi ro</span></td>
+                <td>Rủi ro & thách thức tiềm ẩn</td>
+              </tr>
+              <tr>
+                <td><span class="tag tc">Khuyến nghị</span></td>
+                <td>Quyết định Go / No-Go</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #f0fdf4; color: #059669">
+                💰
+              </div>
+              ROI & Giá Trị
+            </div>
+            <div
+              style="
+                background: #1e293b;
+                color: #e2e8f0;
+                border-radius: 8px;
+                padding: 14px;
+                font-family: &quot;Fira Code&quot;, monospace;
+                font-size: 11px;
+                margin-bottom: 10px;
+              "
+            >
+              <span style="color: #93c5fd">ROI</span> = (<span
+                style="color: #86efac"
+                >Lợi ích</span
+              >
+              − <span style="color: #fca5a5">Chi phí</span>) /
+              <span style="color: #fca5a5">Chi phí</span> × 100<br /><br />
+              <span style="color: #64748b">/* Ví dụ triển khai D365 */</span
+              ><br />
+              Lợi ích = 500,000,000đ/năm<br />
+              Chi phí = 200,000,000đ<br />
+              <span style="color: #fcd34d">ROI = 150%</span>
+            </div>
+            <ul class="dl">
+              <li>
+                Tính lợi ích hữu hình (tiết kiệm chi phí nhân công, giảm lỗi)
+              </li>
+              <li>
+                Tính lợi ích vô hình (tăng trải nghiệm, ra quyết định nhanh hơn)
+              </li>
+              <li>Payback Period thường 12–24 tháng với ERP</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #f5f3ff; color: #7c3aed">🔍</div>
+            Phân Tích Tính Khả Thi (Feasibility)
+          </div>
+          <div class="g2" style="margin-top: 8px">
+            <div class="co co-bl">
+              <span class="co-i">💻</span>
+              <div class="co-b">
+                <div class="co-t">Kỹ thuật (Technical)</div>
+                <div class="co-tx">
+                  Công nghệ có sẵn? Đội ngũ đủ kỹ năng? D365 hỗ trợ nghiệp vụ
+                  này không?
+                </div>
+              </div>
+            </div>
+            <div class="co co-gr">
+              <span class="co-i">💰</span>
+              <div class="co-b">
+                <div class="co-t">Kinh tế (Economic)</div>
+                <div class="co-tx">
+                  Chi phí hợp lý? ROI đủ hấp dẫn? Ngân sách đủ triển khai D365
+                  không?
+                </div>
+              </div>
+            </div>
+            <div class="co co-ye">
+              <span class="co-i">⚙️</span>
+              <div class="co-b">
+                <div class="co-t">Vận hành (Operational)</div>
+                <div class="co-tx">
+                  Tổ chức vận hành tốt sau go-live? Cần đào tạo bao nhiêu nhân
+                  sự?
+                </div>
+              </div>
+            </div>
+            <div class="co co-re">
+              <span class="co-i">⚖️</span>
+              <div class="co-b">
+                <div class="co-t">Pháp lý (Legal)</div>
+                <div class="co-tx">
+                  Có vướng pháp lý không? GDPR, chuẩn kế toán VAS/IFRS, tuân thủ
+                  thuế...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">Q3</span>"Làm thế nào để xác định một dự án có
+            đáng triển khai không?"
+          </div>
+          <div class="qa-a">
+            <strong>Framework:</strong> Thực hiện Business Case: (1) Xác định rõ
+            vấn đề và tác động. (2) Phân tích tính khả thi từ 4 góc: kỹ thuật,
+            kinh tế, vận hành, pháp lý. (3) Tính ROI và payback period. (4) Đánh
+            giá rủi ro. (5) Trình bày khuyến nghị Go/No-Go với dữ liệu minh
+            chứng.
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Với D365 NaviWorld</div>
+            "Khi khách hàng muốn triển khai D365 Business Central, tôi phân
+            tích: kỹ thuật — hệ thống cũ có tích hợp được không? Kinh tế — tiết
+            kiệm bao nhiêu chi phí nhân công? Vận hành — cần đào tạo bao nhiêu
+            nhân viên? Từ đó xây dựng business case thuyết phục BGĐ."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH4 ============== -->
+    <div class="ch c4">
+      <div class="ch-hd">
+        <div class="ch-num">04</div>
+        <div class="ch-info">
+          <h2>Các Bên Liên Quan & Kỹ Thuật Khai Thác Yêu Cầu</h2>
+          <p>
+            Stakeholder identification · Ma trận ảnh hưởng · RACI · 10 kỹ thuật
+            khai thác yêu cầu
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="te">
+          <div class="th-s">
+            <div class="sl th-lbl">📘 Ma Trận Quyền Lực - Quan Tâm</div>
+            <table style="font-size: 11px">
+              <tr>
+                <th style="font-size: 10px"></th>
+                <th style="background: #16a34a; font-size: 10px">
+                  Quan Tâm Thấp
+                </th>
+                <th style="background: #dc2626; font-size: 10px">
+                  Quan Tâm Cao
+                </th>
+              </tr>
+              <tr>
+                <td><strong>Quyền Cao</strong></td>
+                <td style="background: #ecfdf5">
+                  <strong>GIỮ HÀI LÒNG</strong><br /><small
+                    >Thông báo định kỳ</small
+                  >
+                </td>
+                <td style="background: #fef2f2">
+                  <strong>QUẢN LÝ SÁT SAO</strong><br /><small
+                    >Ưu tiên cao nhất</small
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Quyền Thấp</strong></td>
+                <td style="background: #f8fafc">
+                  <strong>THEO DÕI</strong><br /><small>Ít tập trung</small>
+                </td>
+                <td style="background: #fffbeb">
+                  <strong>GIỮ THÔNG SUỐT</strong><br /><small
+                    >Cập nhật thường xuyên</small
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="ex-s">
+            <div class="sl ex-lbl">💼 Ví Dụ — Triển Khai D365</div>
+            <div class="st">Các bên liên quan dự án D365</div>
+            <ul class="dl">
+              <li>
+                <strong>CEO/CFO:</strong> Quyền cao, quan tâm cao → Quản lý sát
+                sao, báo cáo ROI thường xuyên
+              </li>
+              <li>
+                <strong>IT Manager:</strong> Quyền cao, quan tâm thấp → Thuyết
+                phục về tích hợp kỹ thuật
+              </li>
+              <li>
+                <strong>Kế toán viên:</strong> Quyền thấp, quan tâm cao → Đào
+                tạo kỹ, lắng nghe phản hồi UAT
+              </li>
+              <li>
+                <strong>Nhân viên kho:</strong> Quyền thấp, quan tâm thấp → Cập
+                nhật định kỳ qua email
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #fee2e2; color: #dc2626">📋</div>
+            Ma Trận RACI
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Hoạt Động</th>
+                <th>BA</th>
+                <th>PO</th>
+                <th>Dev</th>
+                <th>QA</th>
+                <th>PM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Thu thập Yêu cầu</td>
+                <td class="ra-r">R</td>
+                <td class="ra-a">A</td>
+                <td class="ra-c">C</td>
+                <td class="ra-i">I</td>
+                <td class="ra-i">I</td>
+              </tr>
+              <tr>
+                <td>Viết User Stories</td>
+                <td class="ra-r">R</td>
+                <td class="ra-a">A</td>
+                <td class="ra-c">C</td>
+                <td class="ra-i">I</td>
+                <td class="ra-i">I</td>
+              </tr>
+              <tr>
+                <td>Thiết kế Giải pháp</td>
+                <td class="ra-c">C</td>
+                <td class="ra-a">A</td>
+                <td class="ra-r">R</td>
+                <td class="ra-i">I</td>
+                <td class="ra-i">I</td>
+              </tr>
+              <tr>
+                <td>Phát triển</td>
+                <td class="ra-i">I</td>
+                <td class="ra-i">I</td>
+                <td class="ra-r">R</td>
+                <td class="ra-c">C</td>
+                <td class="ra-a">A</td>
+              </tr>
+              <tr>
+                <td>Kiểm thử (UAT)</td>
+                <td class="ra-r">R</td>
+                <td class="ra-c">C</td>
+                <td class="ra-i">I</td>
+                <td class="ra-a">A</td>
+                <td class="ra-i">I</td>
+              </tr>
+              <tr>
+                <td>Go-Live</td>
+                <td class="ra-c">C</td>
+                <td class="ra-a">A</td>
+                <td class="ra-r">R</td>
+                <td class="ra-c">C</td>
+                <td class="ra-r">R</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top: 7px; font-size: 10px; color: var(--muted)">
+            <span class="ra-r">R</span>=Responsible &nbsp;<span class="ra-a"
+              >A</span
+            >=Accountable &nbsp;<span class="ra-c">C</span>=Consulted
+            &nbsp;<span class="ra-i">I</span>=Informed
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #eef2ff; color: #4f46e5">🎯</div>
+            10 Kỹ Thuật Khai Thác Yêu Cầu
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Kỹ Thuật</th>
+                <th>Khi Nào Dùng</th>
+                <th>Ví Dụ với D365</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><strong>Phỏng vấn</strong></td>
+                <td>Hiểu sâu 1-1 với stakeholder</td>
+                <td>Phỏng vấn CFO về nhu cầu báo cáo tài chính</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><strong>Workshop</strong></td>
+                <td>Thu thập từ nhiều bên cùng lúc</td>
+                <td>Workshop với Kế toán, IT, Kho để xác định scope</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><strong>Brainstorming</strong></td>
+                <td>Khám phá tính năng, khả năng</td>
+                <td>Brainstorm tính năng tự động hóa quy trình mua hàng</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><strong>Quan sát</strong></td>
+                <td>Hiểu quy trình thực tế</td>
+                <td>Quan sát nhân viên kho nhập liệu để tìm điểm đau</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><strong>Phân tích Tài liệu</strong></td>
+                <td>Hiểu hệ thống/quy trình hiện tại</td>
+                <td>Rà soát SOP, báo cáo tài chính, chính sách công ty</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><strong>Khảo sát / Survey</strong></td>
+                <td>Thu thập số lượng lớn từ xa</td>
+                <td>Survey 50 users về trải nghiệm với hệ thống cũ</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><strong>Prototyping</strong></td>
+                <td>Xác nhận giao diện/luồng sớm</td>
+                <td>Mockup màn hình D365 để user phản hồi trước dev</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><strong>Focus Group</strong></td>
+                <td>Thảo luận về trải nghiệm nhóm</td>
+                <td>Focus group kế toán về workflow phê duyệt thanh toán</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td><strong>Hệ thống hiện tại</strong></td>
+                <td>Phân tích dữ liệu, log hiện tại</td>
+                <td>Xem báo cáo lỗi từ hệ thống cũ để tìm vấn đề</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td><strong>Bảng câu hỏi</strong></td>
+                <td>Thu thập thông tin có cấu trúc</td>
+                <td>Gửi questionnaire về yêu cầu báo cáo cho từng phòng</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">Q4</span>"Làm thế nào khi các bên liên quan có
+            yêu cầu mâu thuẫn nhau?"
+          </div>
+          <div class="qa-a">
+            <strong>Framework 5 bước:</strong> (1) Lắng nghe từng bên để hiểu
+            nguyên nhân gốc. (2) Tổ chức workshop chung để các bên hiểu quan
+            điểm của nhau. (3) Link yêu cầu với mục tiêu kinh doanh chung để tìm
+            điểm chung. (4) Đề xuất giải pháp thỏa hiệp. (5) Leo thang lên PM/PO
+            nếu vẫn không giải quyết được.
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Ví dụ D365</div>
+            "Khi Phòng Kế toán muốn báo cáo theo VAS và Kinh doanh muốn IFRS,
+            tôi tổ chức workshop, phân tích xem D365 hỗ trợ được cả hai không,
+            rồi đề xuất giải pháp dual-reporting thỏa mãn cả hai nhu cầu."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH5 ============== -->
+    <div class="ch c5">
+      <div class="ch-hd">
+        <div class="ch-num">05</div>
+        <div class="ch-info">
+          <h2>Kỹ Thuật Yêu Cầu & Tài Liệu Hóa</h2>
+          <p>
+            Loại yêu cầu · Thuộc tính · BRD · FRD/SRS · FDD · Chức năng vs Phi
+            chức năng
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="te">
+          <div class="th-s">
+            <div class="sl th-lbl">📘 Chức Năng vs Phi Chức Năng</div>
+            <div style="margin-bottom: 9px">
+              <span class="tag tb">Chức năng = Hệ thống làm gì</span>
+              <ul class="dl" style="margin-top: 6px">
+                <li>Đăng ký người dùng</li>
+                <li>Tạo đơn hàng / Purchase Order</li>
+                <li>Phê duyệt qua workflow</li>
+                <li>Xuất báo cáo tài chính</li>
+              </ul>
+            </div>
+            <div>
+              <span class="tag tp">Phi chức năng = Tốt đến mức nào</span>
+              <ul class="dl" style="margin-top: 6px">
+                <li>Hiệu năng: phản hồi &lt;3 giây</li>
+                <li>Bảo mật: mã hóa, RBAC</li>
+                <li>Khả năng mở rộng: 10K users</li>
+                <li>Độ tin cậy: 99.9% uptime</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ex-s">
+            <div class="sl ex-lbl">💼 Ví Dụ — D365 Finance Module</div>
+            <div style="margin-bottom: 9px">
+              <span class="tag tb">Chức năng</span>
+              <ul class="dl" style="margin-top: 6px; font-size: 12px">
+                <li>Kế toán tạo phiếu thu/chi trong D365</li>
+                <li>Hệ thống tự động khớp hóa đơn với PO</li>
+                <li>CFO phê duyệt thanh toán qua mobile</li>
+              </ul>
+            </div>
+            <div>
+              <span class="tag tp">Phi chức năng</span>
+              <ul class="dl" style="margin-top: 6px; font-size: 12px">
+                <li>Xử lý 1000 giao dịch/phút đồng thời</li>
+                <li>Đồng bộ real-time với ngân hàng &lt;5 giây</li>
+                <li>Audit trail đầy đủ cho mọi giao dịch</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #eef2ff; color: #4f46e5">📄</div>
+            Tài Liệu Yêu Cầu Chính của BA
+          </div>
+          <div class="g3" style="margin-top: 8px">
+            <div
+              style="
+                border: 1px solid #bfdbfe;
+                border-radius: 10px;
+                padding: 14px;
+                background: #eff6ff;
+              "
+            >
+              <div
+                style="
+                  font-weight: 700;
+                  font-size: 13px;
+                  color: #1d4ed8;
+                  margin-bottom: 6px;
+                "
+              >
+                📋 BRD
+              </div>
+              <div
+                style="
+                  font-size: 10px;
+                  color: #1e40af;
+                  font-weight: 600;
+                  margin-bottom: 6px;
+                "
+              >
+                Business Requirements Document
+              </div>
+              <ul class="dl" style="font-size: 11px">
+                <li>Mục tiêu kinh doanh</li>
+                <li>Phạm vi dự án</li>
+                <li>Bên liên quan</li>
+                <li>Yêu cầu mức cao</li>
+                <li>Tiêu chí thành công</li>
+              </ul>
+            </div>
+            <div
+              style="
+                border: 1px solid #bbf7d0;
+                border-radius: 10px;
+                padding: 14px;
+                background: #f0fdf4;
+              "
+            >
+              <div
+                style="
+                  font-weight: 700;
+                  font-size: 13px;
+                  color: #15803d;
+                  margin-bottom: 6px;
+                "
+              >
+                📝 FRD/SRS
+              </div>
+              <div
+                style="
+                  font-size: 10px;
+                  color: #166534;
+                  font-weight: 600;
+                  margin-bottom: 6px;
+                "
+              >
+                Functional Requirements Document
+              </div>
+              <ul class="dl" style="font-size: 11px">
+                <li>Yêu cầu chức năng chi tiết</li>
+                <li>Use case & luồng quy trình</li>
+                <li>Dữ liệu & giao diện</li>
+                <li>Tiêu chí nghiệm thu</li>
+                <li>Ràng buộc & phụ thuộc</li>
+              </ul>
+            </div>
+            <div
+              style="
+                border: 1px solid #fde68a;
+                border-radius: 10px;
+                padding: 14px;
+                background: #fffbeb;
+              "
+            >
+              <div
+                style="
+                  font-weight: 700;
+                  font-size: 13px;
+                  color: #92400e;
+                  margin-bottom: 6px;
+                "
+              >
+                📊 FDD
+              </div>
+              <div
+                style="
+                  font-size: 10px;
+                  color: #78350f;
+                  font-weight: 600;
+                  margin-bottom: 6px;
+                "
+              >
+                Functional Design Document
+              </div>
+              <ul class="dl" style="font-size: 11px">
+                <li>Mô tả chức năng chi tiết</li>
+                <li>Cấu hình hệ thống</li>
+                <li>Mapping trường dữ liệu</li>
+                <li>Logic nghiệp vụ</li>
+                <li>Tích hợp & dependency</li>
+              </ul>
+              <div class="co co-ye" style="margin-top: 6px; padding: 7px">
+                <div class="co-tx" style="font-size: 10px">
+                  <strong>Key NaviWorld:</strong> FDD là cầu nối BA ↔ Dev cho
+                  mỗi tính năng D365 custom
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #f0fdf4; color: #059669">✅</div>
+            Thuộc Tính Yêu Cầu Tốt
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Thuộc Tính</th>
+                <th>Ý Nghĩa</th>
+                <th>Ví Dụ kiểm tra</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tg">Chính xác (C)</span></td>
+                <td>Đúng & phản ánh nhu cầu thực</td>
+                <td>Hỏi lại stakeholder để xác nhận</td>
+              </tr>
+              <tr>
+                <td><span class="tag tb">Đầy đủ (C)</span></td>
+                <td>Ghi nhận tất cả chi tiết cần thiết</td>
+                <td>Không thiếu điều kiện hay ngoại lệ</td>
+              </tr>
+              <tr>
+                <td><span class="tag tc">Rõ ràng (U)</span></td>
+                <td>Không mơ hồ, một nghĩa duy nhất</td>
+                <td>Developer đọc không cần hỏi lại</td>
+              </tr>
+              <tr>
+                <td><span class="tag tp">Nhất quán (C)</span></td>
+                <td>Không mâu thuẫn yêu cầu khác</td>
+                <td>Cross-check với các yêu cầu liên quan</td>
+              </tr>
+              <tr>
+                <td><span class="tag ty">Ưu tiên hóa (R)</span></td>
+                <td>Được ưu tiên theo giá trị kinh doanh</td>
+                <td>MoSCoW: M/S/C/W được gán rõ ràng</td>
+              </tr>
+              <tr>
+                <td><span class="tag tg">Kiểm chứng (V)</span></td>
+                <td>Có thể kiểm tra và xác thực được</td>
+                <td>Có tiêu chí nghiệm thu đo lường được</td>
+              </tr>
+              <tr>
+                <td><span class="tag to">Truy vết (T)</span></td>
+                <td>Có mã ID và liên kết với yêu cầu khác</td>
+                <td>RTM mapping từ BR → FR → TC → UAT</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">Q5</span>"Acceptance Criteria là gì? Viết như thế
+            nào?"
+          </div>
+          <div class="qa-a">
+            <strong>Định nghĩa:</strong> Điều kiện phải thỏa mãn để yêu cầu được
+            xem là hoàn thành. Format chuẩn: <strong>Given – When – Then</strong
+            ><br /><br />
+            <div
+              style="
+                background: #f0f4ff;
+                border-radius: 7px;
+                padding: 10px;
+                font-size: 12px;
+              "
+            >
+              <strong>Given</strong>: Người dùng đang ở trang đăng nhập<br /><strong
+                >When</strong
+              >: Nhập đúng username và password, nhấn Login<br /><strong
+                >Then</strong
+              >: Được chuyển vào dashboard trong vòng 2 giây
+            </div>
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ D365 — Module Purchase Order</div>
+            <strong>Given</strong> nhân viên mua hàng đã tạo PO chờ duyệt<br />
+            <strong>When</strong> Manager nhấn "Approve" trên PO<br />
+            <strong>Then</strong> PO chuyển trạng thái "Approved", email thông
+            báo gửi nhà cung cấp trong 30 giây, D365 tự tạo receipt entry
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH6 ============== -->
+    <div class="ch c6">
+      <div class="ch-hd">
+        <div class="ch-num">06</div>
+        <div class="ch-info">
+          <h2>Phân Tích Quy Trình & Mô Hình Hóa</h2>
+          <p>
+            AS-IS vs TO-BE · Use Case · Flowchart · DFD · Gap Analysis · 5 Whys
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="te">
+          <div class="th-s">
+            <div class="sl th-lbl">📘 AS-IS vs TO-BE</div>
+            <table style="font-size: 11px">
+              <tr>
+                <th style="font-size: 10px"></th>
+                <th style="background: #64748b; font-size: 10px">
+                  AS-IS (Hiện tại)
+                </th>
+                <th style="background: #4f46e5; font-size: 10px">
+                  TO-BE (Tương lai)
+                </th>
+              </tr>
+              <tr>
+                <td>Mục đích</td>
+                <td>Hiểu hiện trạng</td>
+                <td>Thiết kế tương lai</td>
+              </tr>
+              <tr>
+                <td>Phương pháp</td>
+                <td>Phỏng vấn, quan sát</td>
+                <td>Workshop, phân tích gap</td>
+              </tr>
+              <tr>
+                <td>Đầu ra</td>
+                <td>Process Map hiện tại</td>
+                <td>Process Map tối ưu</td>
+              </tr>
+            </table>
+            <div class="flow" style="margin-top: 8px">
+              <div class="fi" style="background: #64748b">AS-IS</div>
+              <div class="fa">→</div>
+              <div class="fi" style="background: #dc2626">Gap Analysis</div>
+              <div class="fa">→</div>
+              <div class="fi" style="background: #4f46e5">TO-BE</div>
+            </div>
+          </div>
+          <div class="ex-s">
+            <div class="sl ex-lbl">💼 D365 — Quy Trình Mua Hàng</div>
+            <table style="font-size: 11px">
+              <tr>
+                <th style="background: #64748b">AS-IS (Thủ công)</th>
+                <th style="background: #4f46e5">TO-BE (D365)</th>
+              </tr>
+              <tr>
+                <td>Email yêu cầu mua hàng</td>
+                <td>PR tạo trong D365</td>
+              </tr>
+              <tr>
+                <td>Manager phê duyệt qua email</td>
+                <td>Workflow tự động trong D365</td>
+              </tr>
+              <tr>
+                <td>Tạo PO thủ công</td>
+                <td>PO tự động từ approved PR</td>
+              </tr>
+              <tr>
+                <td>Xác nhận giao hàng thủ công</td>
+                <td>Goods Receipt trong D365</td>
+              </tr>
+              <tr>
+                <td>Hóa đơn nhập Excel</td>
+                <td>3-way matching tự động</td>
+              </tr>
+            </table>
+            <div class="co co-gr" style="margin-top: 8px">
+              <span class="co-i">📈</span>
+              <div class="co-b">
+                <div class="co-t">Kết quả TO-BE</div>
+                <div class="co-tx">Giảm 5 ngày → 1 ngày. Giảm lỗi 90%.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #f5f3ff; color: #7c3aed">
+                📋
+              </div>
+              Use Case — Cấu Trúc
+            </div>
+            <div
+              style="
+                background: #f8fafc;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 14px;
+                font-family: monospace;
+                font-size: 11px;
+                margin-bottom: 8px;
+              "
+            >
+              <span style="color: #7c3aed; font-weight: 700">Actor:</span> Kế
+              toán viên, CFO, Nhà cung cấp<br />
+              <span style="color: #4f46e5; font-weight: 700">Use Case:</span
+              ><br />
+              &nbsp;─ Tạo phiếu kế toán<br />
+              &nbsp;─ Phê duyệt thanh toán<br />
+              &nbsp;─ Xem báo cáo P&L<br />
+              &nbsp;─ Xuất hóa đơn VAT<br />
+              <span style="color: #059669; font-weight: 700">System:</span> D365
+              Finance & Operations
+            </div>
+            <div class="co co-bl">
+              <span class="co-i">💡</span>
+              <div class="co-b">
+                <div class="co-tx">
+                  Use case mô tả HỆ THỐNG LÀM GÌ theo góc nhìn người dùng —
+                  không mô tả kỹ thuật bên trong.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #ecfdf5; color: #059669">
+                🌳
+              </div>
+              5 Whys — Phân Tích Nguyên Nhân Gốc
+            </div>
+            <div style="font-size: 12px">
+              <div style="margin-bottom: 5px">
+                <strong style="color: #dc2626">Vấn đề:</strong> Báo cáo tài
+                chính bị sai số liệu
+              </div>
+              <div style="margin-bottom: 3px">
+                ❓ <strong>Why 1:</strong> Số liệu nhập sai →
+                <em>Nhập tay thủ công nhiều</em>
+              </div>
+              <div style="padding-left: 12px; margin-bottom: 3px">
+                ❓ <strong>Why 2:</strong> Sao nhập tay nhiều? →
+                <em>Không có hệ thống tự động hóa</em>
+              </div>
+              <div style="padding-left: 24px; margin-bottom: 3px">
+                ❓ <strong>Why 3:</strong> Tại sao không có? →
+                <em>Chưa tích hợp ERP</em>
+              </div>
+              <div style="padding-left: 36px; margin-bottom: 3px">
+                ❓ <strong>Why 4:</strong> Tại sao chưa? →
+                <em>Chưa đầu tư hệ thống ERP</em>
+              </div>
+              <div style="padding-left: 48px; margin-bottom: 8px">
+                ❓ <strong>Why 5:</strong> Tại sao? →
+                <em>Chưa đánh giá ROI đầy đủ</em>
+              </div>
+              <div class="co co-ye">
+                <span class="co-i">✅</span>
+                <div class="co-b">
+                  <div class="co-t">Root Cause → Giải pháp</div>
+                  <div class="co-tx">
+                    Triển khai D365 + xây dựng Business Case thuyết phục BGĐ về
+                    ROI
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">Q6</span>"Gap Analysis khi triển khai D365 bạn
+            thực hiện như thế nào?"
+          </div>
+          <div class="qa-a">
+            <strong>5 bước Gap Analysis D365:</strong><br />
+            (1) Phân tích AS-IS — ghi lại quy trình hiện tại của khách hàng.<br />
+            (2) Map với tính năng Standard D365 — xem D365 đã hỗ trợ gì sẵn
+            có.<br />
+            (3) Xác định Gap — những gì D365 standard chưa đáp ứng.<br />
+            (4) Đề xuất giải pháp cho từng Gap: Configuration, Customization,
+            hoặc thay đổi quy trình KD.<br />
+            (5) Lập FDD cho Gap cần customization.
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Ví dụ thực tế</div>
+            "Khi triển khai D365 cho công ty phân phối, tôi phát hiện quy trình
+            chiết khấu đa cấp không có trong D365 Standard. Tôi lập FDD mô tả
+            logic chiết khấu và phối hợp developer tùy chỉnh module Sales."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH7 ============== -->
+    <div class="ch c7">
+      <div class="ch-hd">
+        <div class="ch-num">07</div>
+        <div class="ch-info">
+          <h2>User Stories, Ưu Tiên Hóa & Backlog</h2>
+          <p>
+            Cấu trúc User Story · INVEST · MoSCoW · Backlog Refinement · Các
+            phương pháp ưu tiên hóa
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="te">
+          <div class="th-s">
+            <div class="sl th-lbl">📘 Cấu Trúc User Story</div>
+            <div
+              style="
+                background: #eef2ff;
+                border-radius: 8px;
+                padding: 12px;
+                margin-bottom: 10px;
+                font-size: 13px;
+              "
+            >
+              <strong>Là</strong> [loại người dùng]<br />
+              <strong>Tôi muốn</strong> [hành động / tính năng]<br />
+              <strong>Để</strong> [giá trị kinh doanh]
+            </div>
+            <div class="co co-bl">
+              <span class="co-i">💡</span>
+              <div class="co-b">
+                <div class="co-t">Nguyên tắc INVEST</div>
+                <div class="co-tx">
+                  <strong>I</strong>ndependent · <strong>N</strong>egotiable ·
+                  <strong>V</strong>aluable<br /><strong>E</strong>stimable ·
+                  <strong>S</strong>mall · <strong>T</strong>estable
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ex-s">
+            <div class="sl ex-lbl">💼 D365 Sales Module</div>
+            <div
+              style="
+                background: #fffbf0;
+                border: 1px solid #fef3c7;
+                border-radius: 8px;
+                padding: 12px;
+                margin-bottom: 9px;
+                font-size: 12px;
+              "
+            >
+              <strong>Là</strong> nhân viên bán hàng<br />
+              <strong>Tôi muốn</strong> tạo quotation trong D365 và gửi email
+              cho khách từ hệ thống<br />
+              <strong>Để</strong> rút ngắn phản hồi từ 2 ngày → 30 phút
+            </div>
+            <div style="font-size: 12px">
+              <strong>Acceptance Criteria:</strong><br />
+              <span style="color: #7c3aed">Given</span> nhân viên ở màn hình tạo
+              Quotation<br />
+              <span style="color: #059669">When</span> điền đầy đủ thông tin và
+              nhấn "Send"<br />
+              <span style="color: #d97706">Then</span> Quotation PDF gửi email
+              cho khách trong 60 giây và lưu lịch sử trong D365
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #fffbeb; color: #d97706">📊</div>
+            Ưu Tiên Hóa MoSCoW
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Ưu Tiên</th>
+                <th>Ý Nghĩa</th>
+                <th>Ví Dụ D365</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tr">M - Must Have</span></td>
+                <td>Bắt buộc cho go-live, không có không được</td>
+                <td>Đăng nhập, tạo PO, phê duyệt, xuất invoice</td>
+              </tr>
+              <tr>
+                <td><span class="tag to">S - Should Have</span></td>
+                <td>Quan trọng nhưng không bắt buộc ngay</td>
+                <td>Dashboard KPI theo phòng ban, báo cáo tùy chỉnh</td>
+              </tr>
+              <tr>
+                <td><span class="tag ty">C - Could Have</span></td>
+                <td>Có thì tốt, nếu có thời gian mới làm</td>
+                <td>Tích hợp chatbot hỗ trợ user, dark mode</td>
+              </tr>
+              <tr>
+                <td><span class="tag tg">W - Won't Have</span></td>
+                <td>Chưa cần trong release này</td>
+                <td>AI prediction analytics, blockchain integration</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #eef2ff; color: #4f46e5">
+                🔄
+              </div>
+              Backlog Refinement
+            </div>
+            <ul class="cl">
+              <li>Rà soát & cập nhật user story thường xuyên</li>
+              <li>Ưu tiên hóa lại theo nhu cầu kinh doanh</li>
+              <li>Bổ sung/chỉnh tiêu chí nghiệm thu</li>
+              <li>Chia nhỏ story lớn thành các story nhỏ hơn</li>
+              <li>Loại bỏ story trùng lặp hoặc không còn cần</li>
+              <li>Ước lượng story points cùng dev team</li>
+              <li>Đảm bảo story sẵn sàng cho sprint tiếp theo</li>
+            </ul>
+            <div class="co co-bl" style="margin-top: 10px">
+              <span class="co-i">🎯</span>
+              <div class="co-b">
+                <div class="co-t">Mục tiêu</div>
+                <div class="co-tx">
+                  Backlog sạch, ưu tiên rõ ràng để team luôn làm đúng thứ quan
+                  trọng nhất đúng thời điểm.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #f0fdf4; color: #059669">
+                📋
+              </div>
+              Các Phương Pháp Ưu Tiên Hóa
+            </div>
+            <ul class="dl">
+              <li>
+                <strong>MoSCoW</strong> — Đơn giản, dễ truyền đạt cho business
+              </li>
+              <li>
+                <strong>Value vs Effort Matrix</strong> — Ưu tiên giá trị cao,
+                nỗ lực thấp trước
+              </li>
+              <li>
+                <strong>WSJF (SAFe)</strong> — (Giá trị KD + Khẩn + Giảm rủi ro)
+                ÷ Effort
+              </li>
+              <li>
+                <strong>Kano Model</strong> — Dựa trên mức độ hài lòng khách
+                hàng
+              </li>
+              <li>
+                <strong>RICE</strong> — Reach × Impact × Confidence ÷ Effort
+              </li>
+            </ul>
+            <div class="co co-ye" style="margin-top: 10px">
+              <span class="co-i">⭐</span>
+              <div class="co-b">
+                <div class="co-t">Khuyến nghị với D365</div>
+                <div class="co-tx">
+                  MoSCoW phổ biến nhất khi triển khai ERP vì dễ align với
+                  business stakeholders không có nền kỹ thuật.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH8 ============== -->
+    <div class="ch c8">
+      <div class="ch-hd">
+        <div class="ch-num">08</div>
+        <div class="ch-info">
+          <h2>BA trong Agile/Scrum & Hợp Tác Nhóm</h2>
+          <p>
+            Scrum Framework · Vai trò BA · Nghi thức Scrum · Definition of Ready
+            · Definition of Done
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="g2">
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #f0fdf4; color: #059669">
+                🔄
+              </div>
+              Scrum Framework
+            </div>
+            <div
+              class="flow"
+              style="flex-direction: column; align-items: flex-start; gap: 5px"
+            >
+              <div class="fi" style="background: #7c3aed; min-width: 180px">
+                📋 Product Backlog
+              </div>
+              <div class="fa" style="padding-left: 10px">↓</div>
+              <div class="fi" style="background: #4f46e5; min-width: 180px">
+                📅 Sprint Planning
+              </div>
+              <div class="fa" style="padding-left: 10px">↓</div>
+              <div class="fi" style="background: #059669; min-width: 180px">
+                ⚡ Sprint (1-4 tuần)
+              </div>
+              <div class="fa" style="padding-left: 10px">↓</div>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap">
+                <div
+                  class="fi"
+                  style="
+                    background: #0891b2;
+                    font-size: 10px;
+                    padding: 4px 10px;
+                  "
+                >
+                  📢 Daily Scrum
+                </div>
+                <div
+                  class="fi"
+                  style="
+                    background: #d97706;
+                    font-size: 10px;
+                    padding: 4px 10px;
+                  "
+                >
+                  🎯 Sprint Review
+                </div>
+                <div
+                  class="fi"
+                  style="
+                    background: #dc2626;
+                    font-size: 10px;
+                    padding: 4px 10px;
+                  "
+                >
+                  🔄 Retrospective
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #f0fdf4; color: #059669">
+                🧑‍💼
+              </div>
+              Vai Trò BA trong Scrum
+            </div>
+            <ul class="cl">
+              <li>Hỗ trợ PO ưu tiên & tinh chỉnh backlog</li>
+              <li>Khai thác & phân tích yêu cầu liên tục</li>
+              <li>Viết user story rõ ràng, kiểm thử được</li>
+              <li>Tham gia Sprint Planning cùng team</li>
+              <li>Giải đáp thắc mắc Dev trong sprint ngay lập tức</li>
+              <li>Xác thực kết quả trong Sprint Review</li>
+              <li>Thúc đẩy phối hợp — đảm bảo giá trị</li>
+            </ul>
+            <div class="co co-ye" style="margin-top: 8px">
+              <span class="co-i">🌟</span>
+              <div class="co-b">
+                <div class="co-t">Trong Agile, BA là cầu nối!</div>
+                <div class="co-tx">
+                  BA đảm bảo team phát triển đúng thứ kinh doanh cần, đúng chất
+                  lượng mong đợi.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #fffbeb; color: #d97706">📅</div>
+            Nghi Thức Scrum & Đóng Góp của BA
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Nghi Thức</th>
+                <th>Mục Đích</th>
+                <th>BA Đóng Góp Gì</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sprint Planning</strong></td>
+                <td>Lên kế hoạch công việc sprint</td>
+                <td>Làm rõ yêu cầu, định nghĩa AC, trả lời câu hỏi</td>
+              </tr>
+              <tr>
+                <td><strong>Backlog Refinement</strong></td>
+                <td>Chuẩn bị backlog cho sprint sau</td>
+                <td>Phân tích, viết, chia nhỏ và ưu tiên user story</td>
+              </tr>
+              <tr>
+                <td><strong>Daily Scrum</strong></td>
+                <td>Đồng bộ tiến độ, gỡ vướng</td>
+                <td>Chia sẻ cập nhật, làm rõ vướng mắc ngay lập tức</td>
+              </tr>
+              <tr>
+                <td><strong>Sprint Review</strong></td>
+                <td>Demo & thu thập phản hồi</td>
+                <td>Xác thực kết quả với BLQ, cập nhật backlog</td>
+              </tr>
+              <tr>
+                <td><strong>Retrospective</strong></td>
+                <td>Cải tiến quy trình team</td>
+                <td>Đề xuất cải tiến quy trình phân tích & phối hợp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #cffafe; color: #0891b2">
+                ✅
+              </div>
+              Definition of Ready (DoR)
+            </div>
+            <p style="font-size: 11px; margin-bottom: 8px; color: var(--muted)">
+              Story phải đạt tiêu chuẩn này trước khi đưa vào Sprint:
+            </p>
+            <ul class="cl">
+              <li>Mô tả rõ ràng yêu cầu/story</li>
+              <li>Đã định nghĩa tiêu chí nghiệm thu</li>
+              <li>Đã xác định độ ưu tiên (MoSCoW)</li>
+              <li>Đã xác định phụ thuộc và ràng buộc</li>
+              <li>Đã ước lượng & định cỡ (story points)</li>
+              <li>Đáp ứng tiêu chí INVEST</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #f0fdf4; color: #059669">
+                🏁
+              </div>
+              Definition of Done (DoD)
+            </div>
+            <p style="font-size: 11px; margin-bottom: 8px; color: var(--muted)">
+              Story được xem là hoàn thành khi:
+            </p>
+            <ul class="cl">
+              <li>Code đã hoàn thành & được review</li>
+              <li>Unit test đã viết và pass</li>
+              <li>QA đã kiểm thử và chấp nhận</li>
+              <li>Tài liệu đã cập nhật đầy đủ</li>
+              <li>Đã deploy lên môi trường test/staging</li>
+              <li>Tiêu chí nghiệm thu đã đạt đủ</li>
+              <li>BLQ đã xác nhận (khi cần thiết)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">Q8</span>"BA khác Product Owner ở chỗ nào trong
+            Scrum?"
+          </div>
+          <div class="qa-a">
+            <strong>Sự khác biệt:</strong> PO là người QUYẾT ĐỊNH — sở hữu
+            product vision, cuối cùng quyết định ưu tiên và chịu trách nhiệm về
+            giá trị sản phẩm. BA là người HỖ TRỢ — phân tích, làm rõ yêu cầu,
+            viết user story và đảm bảo team hiểu đúng cần làm gì. Trong thực tế,
+            đặc biệt ở Việt Nam, một người thường kiêm cả hai vai trò.
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Với NaviWorld</div>
+            "Trong dự án triển khai D365, BA đóng vai Functional Consultant —
+            làm việc sát với business users để khai thác yêu cầu, viết FDD, và
+            đảm bảo D365 được cấu hình đúng theo nhu cầu của từng phòng ban."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH9 ============== -->
+    <div class="ch c9">
+      <div class="ch-hd">
+        <div class="ch-num">09</div>
+        <div class="ch-info">
+          <h2>Phân Tích Dữ Liệu, UAT & Đánh Giá Giải Pháp</h2>
+          <p>
+            SQL cơ bản · Excel Analysis · UAT Planning · RTM · KPI Dashboard ·
+            Change Management
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="te">
+          <div class="th-s">
+            <div class="sl th-lbl">📘 SQL Cơ Bản Cho BA</div>
+            <pre><span class="kw">SELECT</span> status, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> total
+<span class="kw">FROM</span> sales_orders
+<span class="kw">WHERE</span> order_date >= <span class="str">'2024-01-01'</span>
+<span class="kw">GROUP BY</span> status
+<span class="kw">ORDER BY</span> total <span class="kw">DESC</span>;</pre>
+            <ul class="dl" style="font-size: 11px">
+              <li>SELECT, WHERE, GROUP BY, ORDER BY</li>
+              <li>COUNT, SUM, AVG, MIN, MAX</li>
+              <li>JOIN (INNER, LEFT, RIGHT)</li>
+              <li>CASE WHEN cho phân loại dữ liệu</li>
+              <li>Subqueries & CTEs</li>
+            </ul>
+          </div>
+          <div class="ex-s">
+            <div class="sl ex-lbl">💼 D365 — Phân Tích Hiệu Suất</div>
+            <pre><span class="cm">-- Top 10 khách hàng doanh thu cao nhất</span>
+<span class="kw">SELECT</span> c.name,
+       <span class="fn">SUM</span>(ol.amount) <span class="kw">AS</span> revenue,
+       <span class="fn">COUNT</span>(o.id) <span class="kw">AS</span> orders
+<span class="kw">FROM</span> customers c
+<span class="kw">JOIN</span> orders o <span class="kw">ON</span> c.id = o.cust_id
+<span class="kw">JOIN</span> order_lines ol
+     <span class="kw">ON</span> o.id = ol.order_id
+<span class="kw">WHERE</span> o.year = <span class="num">2024</span>
+<span class="kw">GROUP BY</span> c.name
+<span class="kw">ORDER BY</span> revenue <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> <span class="num">10</span>;</pre>
+            <div class="co co-bl" style="margin-top: 7px">
+              <span class="co-i">💡</span>
+              <div class="co-b">
+                <div class="co-tx">
+                  D365 tích hợp Power BI — BA dùng để tạo dashboard phân tích
+                  trực quan cho stakeholders.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #eff6ff; color: #2563eb">🧪</div>
+            Quy Trình UAT & Checklist
+          </div>
+          <div class="g2">
+            <div>
+              <p style="font-weight: 700; font-size: 12px; margin-bottom: 8px">
+                📋 6 Bước UAT
+              </p>
+              <div
+                class="flow"
+                style="
+                  flex-direction: column;
+                  align-items: flex-start;
+                  gap: 5px;
+                "
+              >
+                <div class="fi" style="background: #4f46e5; font-size: 11px">
+                  1. Định nghĩa mục tiêu UAT
+                </div>
+                <div class="fi" style="background: #7c3aed; font-size: 11px">
+                  2. Xác định kịch bản test
+                </div>
+                <div class="fi" style="background: #9333ea; font-size: 11px">
+                  3. Chuẩn bị dữ liệu test thực tế
+                </div>
+                <div class="fi" style="background: #ec4899; font-size: 11px">
+                  4. Business user thực thi UAT
+                </div>
+                <div class="fi" style="background: #f59e0b; font-size: 11px">
+                  5. Ghi nhận & theo dõi lỗi
+                </div>
+                <div class="fi" style="background: #059669; font-size: 11px">
+                  6. Nghiệm thu từ stakeholders
+                </div>
+              </div>
+            </div>
+            <div>
+              <p style="font-weight: 700; font-size: 12px; margin-bottom: 8px">
+                ✅ Checklist UAT Chuẩn
+              </p>
+              <ul class="cl">
+                <li>Mô tả rõ mục tiêu từng kịch bản</li>
+                <li>Dữ liệu test đại diện thực tế</li>
+                <li>Business user (không phải IT) thực hiện</li>
+                <li>Ghi nhận lỗi: bước nào, lỗi gì, tác động</li>
+                <li>Phân loại: Critical / Major / Minor</li>
+                <li>Theo dõi fix & retest lỗi Critical</li>
+                <li>Sign-off từ business stakeholders</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #eef2ff; color: #4f46e5">
+                🔗
+              </div>
+              RTM — Requirement Traceability Matrix
+            </div>
+            <table style="font-size: 11px">
+              <thead>
+                <tr>
+                  <th>Req ID</th>
+                  <th>Yêu cầu NV</th>
+                  <th>User Story</th>
+                  <th>Test Case</th>
+                  <th>UAT</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>BR-01</td>
+                  <td>Đăng ký email</td>
+                  <td>US-101</td>
+                  <td>TC-101, 102</td>
+                  <td>UAT-101</td>
+                  <td>
+                    <span class="tag tg" style="font-size: 9px">✓ Done</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>BR-02</td>
+                  <td>Đăng nhập</td>
+                  <td>US-102</td>
+                  <td>TC-103, 104</td>
+                  <td>UAT-102</td>
+                  <td>
+                    <span class="tag tg" style="font-size: 9px">✓ Done</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>BR-03</td>
+                  <td>Đặt mật khẩu</td>
+                  <td>US-103</td>
+                  <td>TC-105</td>
+                  <td>UAT-103</td>
+                  <td>
+                    <span class="tag ty" style="font-size: 9px"
+                      >In Progress</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="co co-gr" style="margin-top: 8px">
+              <span class="co-i">🎯</span>
+              <div class="co-b">
+                <div class="co-tx">
+                  RTM đảm bảo mọi yêu cầu đều được test và không bị bỏ sót trong
+                  UAT.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #ffedd5; color: #ea580c">
+                📈
+              </div>
+              KPI Đánh Giá Giải Pháp D365
+            </div>
+            <ul class="cl">
+              <li>Đo xu hướng KPI theo baseline đã đặt trước</li>
+              <li>So sánh trước/sau triển khai D365</li>
+              <li>Xác định khoảng trống chưa đạt</li>
+              <li>Thu thập phản hồi người dùng thực</li>
+              <li>Lên kế hoạch cải tiến liên tục</li>
+            </ul>
+            <div
+              style="
+                background: #fff7ed;
+                border-radius: 7px;
+                padding: 10px;
+                margin-top: 9px;
+                font-size: 11px;
+              "
+            >
+              <strong>KPI mẫu dự án D365:</strong><br />
+              • Chu kỳ đơn hàng: 5 ngày →
+              <span style="color: #059669; font-weight: 700">1.5 ngày</span
+              ><br />
+              • Sai sót nhập liệu: 15% →
+              <span style="color: #059669; font-weight: 700">1.2%</span><br />
+              • Thời gian đóng sổ tháng: 3 ngày →
+              <span style="color: #059669; font-weight: 700">2 giờ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== CH10 ============== -->
+    <div class="ch c10">
+      <div class="ch-hd">
+        <div class="ch-num">10</div>
+        <div class="ch-info">
+          <h2>Khai Thác Đồ Án & Ôn Tập Phỏng Vấn NaviWorld</h2>
+          <p>
+            14 bước BA trong đồ án · JD NaviWorld D365 · Câu hỏi thực tế · Chiến
+            lược phỏng vấn STAR
+          </p>
+        </div>
+      </div>
+      <div class="ch-body">
+        <div class="proj">
+          <h3>🎓 Dự Án Đồ Án — Hành Trình BA Đầy Đủ</h3>
+          <p class="sub">
+            Hệ thống LMS / E-commerce / Quản lý doanh nghiệp — Áp dụng Scrum · 4
+            tháng · 5 stakeholders
+          </p>
+          <div class="g3">
+            <div class="ps">
+              <div class="psn">5+</div>
+              <div class="psl">Stakeholder phỏng vấn</div>
+            </div>
+            <div class="ps">
+              <div class="psn">14</div>
+              <div class="psl">Bước quy trình BA</div>
+            </div>
+            <div class="ps">
+              <div class="psn">6+</div>
+              <div class="psl">Sản phẩm BA bàn giao</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #ffedd5; color: #ea580c">📋</div>
+            14 Bước BA Đầu-Cuối Trong Dự Án Đồ Án
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Hoạt Động BA</th>
+                <th>Thực Hiện Trong Đồ Án</th>
+                <th>Sản Phẩm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><strong>Vấn đề Kinh doanh</strong></td>
+                <td>Phân tích vấn đề giảng viên/sinh viên với hệ thống cũ</td>
+                <td>Problem Statement</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><strong>Xác định Bên liên quan</strong></td>
+                <td>Xác định: Giảng viên, Sinh viên, Admin, IT</td>
+                <td>Stakeholder Register</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><strong>Khai thác Yêu cầu</strong></td>
+                <td>
+                  Phỏng vấn, workshop, phân tích tài liệu khóa học hiện tại
+                </td>
+                <td>Interview Notes</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><strong>Yêu cầu Nghiệp vụ</strong></td>
+                <td>
+                  Chuyển khoản nhanh, bảo mật, real-time, hạn mức & quy tắc
+                </td>
+                <td>BRD</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><strong>Phân tích AS-IS → TO-BE</strong></td>
+                <td>
+                  Vẽ luồng hiện tại, xác định khoảng cách, thiết kế tương lai
+                </td>
+                <td>Process Maps + Gap</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><strong>User Story & Acceptance Criteria</strong></td>
+                <td>
+                  Tạo epic, feature & user story với AC rõ ràng kiểm thử được
+                </td>
+                <td>User Stories + AC</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><strong>Ưu tiên hóa MoSCoW</strong></td>
+                <td>Ưu tiên backlog theo giá trị kinh doanh với team</td>
+                <td>Prioritized Backlog</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><strong>Backlog & Refinement (JIRA)</strong></td>
+                <td>
+                  Thêm story vào product backlog, tinh chỉnh, ước lượng sprint
+                </td>
+                <td>JIRA Sprint Backlog</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td><strong>Phát triển</strong></td>
+                <td>Dev xây dựng theo user story đã thống nhất trong sprint</td>
+                <td>Working Software</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td><strong>QA & Kiểm thử</strong></td>
+                <td>Test chức năng, hồi quy, tích hợp, bảo mật & hiệu năng</td>
+                <td>Test Reports</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td><strong>UAT</strong></td>
+                <td>Business user xác thực giải pháp trong môi trường UAT</td>
+                <td>UAT Sign-off</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td><strong>Yêu cầu Thay đổi</strong></td>
+                <td>Ghi nhận gap, tạo CR, đánh giá tác động & phê duyệt</td>
+                <td>Change Log</td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td><strong>Triển khai Production</strong></td>
+                <td>Hỗ trợ go-live, theo dõi ổn định & hiệu năng</td>
+                <td>Deployment Report</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td><strong>Đánh giá KPI & Giá trị KD</strong></td>
+                <td>Theo dõi KPI, đo lường thành công, thu thập phản hồi</td>
+                <td>Post-Impl Review</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="div">
+          <span class="div-t">🏢 JD NaviWorld — Phân Tích & Định Hướng</span>
+          <div class="div-l"></div>
+        </div>
+
+        <div class="card">
+          <div class="ct">
+            <div class="ci" style="background: #eef2ff; color: #4f46e5">🏢</div>
+            NaviWorld — Dynamics 365 Functional Consultant / BA
+          </div>
+          <div class="g2">
+            <div>
+              <p style="font-weight: 700; margin-bottom: 8px; color: var(--p)">
+                ✅ Yêu Cầu Chính từ JD
+              </p>
+              <ul class="dl">
+                <li>
+                  Khảo sát, phân tích quy trình nghiệp vụ (Finance, Sales,
+                  Inventory, Purchasing, Manufacturing)
+                </li>
+                <li>Requirement Gathering & Gap Analysis</li>
+                <li>Viết Functional Design Document (FDD) cho team kỹ thuật</li>
+                <li>Cấu hình & tùy chỉnh Microsoft Dynamics 365</li>
+                <li>Phối hợp với Dev để kiểm thử, tích hợp tính năng</li>
+                <li>User Training & hỗ trợ UAT & Go-live</li>
+                <li>Ưu tiên: kinh nghiệm MS Dynamics 365 / NAV / AX</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-weight: 700; margin-bottom: 8px; color: var(--ok)">
+                🎁 Phúc Lợi Nổi Bật
+              </p>
+              <ul class="cl">
+                <li>Lương cạnh tranh + thưởng hiệu suất hấp dẫn</li>
+                <li>
+                  Đào tạo chuyên sâu + thi chứng chỉ D365 (Microsoft Certified)
+                </li>
+                <li>BHYT, BHXH, BHTN + bảo hiểm sức khỏe bổ sung</li>
+                <li>Khám sức khỏe định kỳ + team building + du lịch</li>
+                <li>
+                  Môi trường quốc tế, chuyên nghiệp, nhiều cơ hội thăng tiến
+                </li>
+              </ul>
+              <div class="co co-bl" style="margin-top: 10px">
+                <span class="co-i">🌍</span>
+                <div class="co-b">
+                  <div class="co-t">Về NaviWorld</div>
+                  <div class="co-tx">
+                    Đơn vị hàng đầu triển khai ERP/CRM Microsoft tại Việt Nam.
+                    Đối tác chính thức của Microsoft Dynamics, phục vụ doanh
+                    nghiệp vừa và lớn trong quá trình chuyển đổi số.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="div">
+          <span class="div-t"
+            >🎤 Câu Hỏi Phỏng Vấn NaviWorld — STAR Method</span
+          >
+          <div class="div-l"></div>
+        </div>
+
+        <div class="co co-pu">
+          <span class="co-i">⭐</span>
+          <div class="co-b">
+            <div class="co-t">Phương pháp STAR cho câu hỏi hành vi</div>
+            <div class="co-tx">
+              <strong>S</strong>ituation → <strong>T</strong>ask →
+              <strong>A</strong>ction → <strong>R</strong>esult | Luôn kết thúc
+              bằng con số hoặc kết quả cụ thể đo lường được.
+            </div>
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">NaviWorld Q1</span>"D365 Business Central khác gì
+            Finance & Operations (F&O)?"
+          </div>
+          <div class="qa-a">
+            <strong>Business Central:</strong> ERP cho doanh nghiệp vừa và nhỏ
+            (SMB). Tích hợp Finance, Sales, Purchasing, Inventory, Manufacturing
+            cơ bản. Giao diện web đơn giản, triển khai nhanh, chi phí thấp
+            hơn.<br /><br />
+            <strong>Finance & Operations (F&O):</strong> ERP cho doanh nghiệp
+            lớn, phức tạp hơn. Có thêm module Advanced Manufacturing, Supply
+            Chain Management, Human Resources, Project Management. Yêu cầu
+            customization và triển khai phức tạp hơn, chi phí cao hơn.
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Học hỏi chủ động</div>
+            "Trong quá trình tự học, tôi đã khám phá D365 Business Central
+            sandbox environment trên Microsoft Learn, giúp tôi hiểu cấu trúc
+            module và luồng nghiệp vụ cơ bản. Tôi cũng đọc tài liệu về Gap
+            Analysis và FDD trong các dự án D365."
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">NaviWorld Q2</span>"Bạn thực hiện gap analysis
+            khi bắt đầu triển khai D365 như thế nào?"
+          </div>
+          <div class="qa-a">
+            <strong>Quy trình 5 bước:</strong><br />
+            <div class="flow" style="margin: 8px 0">
+              <div class="fi" style="background: #4f46e5; font-size: 10px">
+                1. AS-IS
+              </div>
+              <div class="fa">→</div>
+              <div class="fi" style="background: #7c3aed; font-size: 10px">
+                2. Map D365 Standard
+              </div>
+              <div class="fa">→</div>
+              <div class="fi" style="background: #ec4899; font-size: 10px">
+                3. Identify Gaps
+              </div>
+              <div class="fa">→</div>
+              <div class="fi" style="background: #f59e0b; font-size: 10px">
+                4. Solution per Gap
+              </div>
+              <div class="fa">→</div>
+              <div class="fi" style="background: #059669; font-size: 10px">
+                5. FDD Writing
+              </div>
+            </div>
+            (1) Phỏng vấn & workshop để ghi lại quy trình AS-IS của khách
+            hàng.<br />
+            (2) Map từng bước quy trình AS-IS với tính năng Standard của
+            D365.<br />
+            (3) Xác định Gap — D365 Standard chưa hỗ trợ gì.<br />
+            (4) Đề xuất giải pháp: Configuration, Customization, hoặc thay đổi
+            quy trình kinh doanh.<br />
+            (5) Lập FDD cho từng Gap cần customization để dev implement.
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Từ đồ án áp dụng sang D365</div>
+            "Trong đồ án, tôi thực hiện AS-IS/TO-BE analysis tương tự. Với D365,
+            tôi sẽ phỏng vấn kế toán về quy trình thanh toán hiện tại, sau đó so
+            sánh với workflow D365 Standard, xác định gap như chiết khấu đặc thù
+            của công ty, và viết FDD để customize."
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">NaviWorld Q3</span>"FDD là gì và bạn viết nó như
+            thế nào?"
+          </div>
+          <div class="qa-a">
+            <strong>FDD (Functional Design Document)</strong> mô tả chi tiết
+            cách một tính năng/quy trình nghiệp vụ sẽ được triển khai trong
+            D365. Đây là tài liệu trung gian BA → Developer.<br /><br />
+            <strong>Cấu trúc FDD gồm:</strong> (1) Mô tả chức năng & mục tiêu
+            KD. (2) Flowchart quy trình TO-BE. (3) Mapping trường dữ liệu (field
+            mapping). (4) Logic nghiệp vụ & validation rules. (5) Integration
+            points với module/hệ thống khác. (6) UI mockup/wireframe. (7) Tiêu
+            chí nghiệm thu.
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ FDD — Module 3-Way Matching D365</div>
+            "Tôi viết FDD cho tính năng tự động khớp hóa đơn 3 chiều (PO - GRN -
+            Invoice). FDD mô tả: logic so khớp, các trường hợp khớp đúng/sai,
+            cách hiển thị sai lệch cho kế toán, workflow phê duyệt ngoại lệ.
+            Developer dùng FDD này implement đúng yêu cầu nghiệp vụ."
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">NaviWorld Q4</span>"Kể tình huống khó trong dự án
+            và cách bạn xử lý?" (STAR)
+          </div>
+          <div class="qa-a">
+            <strong>S – Situation:</strong> Trong đồ án, các bên liên quan có kỳ
+            vọng khác nhau về scope, dẫn đến nguy cơ scope creep sau 2 tuần
+            development.<br /><br />
+            <strong>T – Task:</strong> Làm rõ và align scope trước khi tiếp tục
+            phát triển thêm tính năng.<br /><br />
+            <strong>A – Action:</strong> Tổ chức scope-alignment workshop với
+            tất cả stakeholders. Trình bày use case diagram và danh sách tính
+            năng. Dùng MoSCoW để cùng nhau ưu tiên hóa. Lập biên bản thống nhất
+            scope được ký bởi tất cả bên.<br /><br />
+            <strong>R – Result:</strong> Dự án hoàn thành đúng scope. Team tập
+            trung Must Have, go-live đúng hạn với chất lượng tốt. Không có scope
+            creep phát sinh thêm.
+          </div>
+          <div class="qa-ex">
+            <div class="qa-exl">✦ Áp dụng với D365</div>
+            "Khi triển khai D365, mỗi phòng ban thường có wish-list riêng. Tôi
+            sẽ dùng cùng phương pháp: gap analysis rõ ràng, MoSCoW để
+            prioritize, và FDD scope document được sign-off bởi sponsor trước
+            khi developer bắt đầu."
+          </div>
+        </div>
+
+        <div class="qa">
+          <div class="qa-q">
+            <span class="qa-b">NaviWorld Q5</span>"Tại sao bạn muốn làm việc với
+            NaviWorld trong lĩnh vực ERP/D365?"
+          </div>
+          <div class="qa-a">
+            <strong>Gợi ý trả lời (cá nhân hóa):</strong><br /><br />
+            "Tôi bị thu hút bởi cơ hội làm việc ở giao điểm giữa kinh doanh và
+            công nghệ — đây chính xác là những gì BA trong lĩnh vực ERP thực
+            hiện hàng ngày. NaviWorld là đối tác Microsoft hàng đầu, môi trường
+            này sẽ giúp tôi học sâu về quy trình nghiệp vụ đa ngành và nền tảng
+            Dynamics 365.<br /><br />
+            Đặc biệt, cơ hội được đào tạo và thi chứng chỉ Microsoft Certified
+            là điều tôi rất mong muốn — vì chứng chỉ này sẽ mở ra sự nghiệp dài
+            hạn trong lĩnh vực ERP consulting quốc tế.<br /><br />
+            Nền tảng học vấn CNTT của tôi kết hợp với kinh nghiệm thực hành BA
+            đầy đủ trong dự án đồ án — từ khai thác yêu cầu, phân tích quy
+            trình, đến UAT và go-live — giúp tôi tự tin đóng góp giá trị thực sự
+            cho NaviWorld ngay từ những ngày đầu."
+          </div>
+        </div>
+
+        <div class="div">
+          <span class="div-t">📝 Checklist Ôn Tập Trước Ngày Phỏng Vấn</span>
+          <div class="div-l"></div>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #f0fdf4; color: #059669">
+                ✅
+              </div>
+              Kiến Thức Phải Nắm Vững
+            </div>
+            <ul class="cl">
+              <li>Vai trò BA & so sánh với PM, PO, QA, Dev</li>
+              <li>Vòng đời BA & hoạt động trong từng giai đoạn</li>
+              <li>10 kỹ thuật khai thác yêu cầu + khi nào dùng</li>
+              <li>Chức năng vs Phi chức năng (với ví dụ)</li>
+              <li>BRD, FRD, FDD — cấu trúc và mục đích</li>
+              <li>Use Case, Flowchart, AS-IS/TO-BE</li>
+              <li>User Story format + INVEST + Given-When-Then</li>
+              <li>MoSCoW & các phương pháp ưu tiên hóa</li>
+              <li>Scrum: DoR, DoD, nghi thức, vai trò BA</li>
+              <li>RTM (truy vết yêu cầu) & UAT process</li>
+              <li>Gap Analysis — quy trình 5 bước với D365</li>
+              <li>SQL cơ bản & Excel phân tích dữ liệu</li>
+              <li>D365 BC vs F&O + FDD structure</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="ct">
+              <div class="ci" style="background: #eef2ff; color: #4f46e5">
+                🎯
+              </div>
+              Chiến Lược Phỏng Vấn Thành Công
+            </div>
+            <ul class="cl">
+              <li>Khai thác đồ án làm ví dụ cho MỌI câu hỏi</li>
+              <li>Áp dụng context D365/NaviWorld vào câu trả lời</li>
+              <li>Dùng STAR cho câu hỏi hành vi</li>
+              <li>Chủ động hỏi về quy trình làm việc NaviWorld</li>
+              <li>Thể hiện đam mê học D365 & phát triển bản thân</li>
+            </ul>
+            <div class="co co-ye" style="margin-top: 10px">
+              <span class="co-i">💡</span>
+              <div class="co-b">
+                <div class="co-t">Câu hỏi thông minh nên hỏi</div>
+                <div class="co-tx">
+                  • "Quy trình onboarding và đào tạo D365 của NaviWorld như thế
+                  nào?"<br />• "Dự án điển hình một BA junior phụ trách thường
+                  như thế nào?"<br />• "Roadmap phát triển lên Senior Consultant
+                  sau 2-3 năm?"
+                </div>
+              </div>
+            </div>
+            <div class="co co-gr" style="margin-top: 8px">
+              <span class="co-i">🏆</span>
+              <div class="co-b">
+                <div class="co-t">3 Điểm Mạnh Nổi Bật</div>
+                <div class="co-tx">
+                  • Thực hành đầy đủ 14 bước quy trình BA trong đồ án<br />•
+                  Hiểu cả kỹ thuật (CNTT) lẫn nghiệp vụ (kinh doanh)<br />• Chủ
+                  động tự học D365 và eager to learn liên tục
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card"
+          style="
+            background: linear-gradient(135deg, #f0f4ff, #eef2ff);
+            border: 2px solid #c7d2fe;
+          "
+        >
+          <div class="ct" style="color: #4f46e5; font-size: 15px">
+            <div class="ci" style="background: #4f46e5; color: #fff">🌟</div>
+            Khái Niệm Quan Trọng — Tránh Nhầm Lẫn
+          </div>
+          <div class="g2">
+            <ul class="dl">
+              <li>
+                <strong>Requirement ≠ Solution</strong> — BA ghi yêu cầu, không
+                phải giải pháp kỹ thuật
+              </li>
+              <li>
+                <strong>User Story ≠ Acceptance Criteria</strong> — Story là
+                "cần gì", AC là "khi nào xong"
+              </li>
+              <li>
+                <strong>BA ≠ Product Owner</strong> — BA phân tích, PO quyết
+                định ưu tiên cuối cùng
+              </li>
+              <li>
+                <strong>AS-IS ≠ TO-BE</strong> — AS-IS hiện tại thực tế, TO-BE
+                là tương lai mong muốn
+              </li>
+            </ul>
+            <ul class="dl">
+              <li>
+                <strong>BRD ≠ FRD ≠ FDD</strong> — BRD mức cao, FRD chức năng,
+                FDD thiết kế chi tiết
+              </li>
+              <li>
+                <strong>Gap ≠ Root Cause</strong> — Gap là khoảng cách, Root
+                Cause là nguyên nhân sâu xa
+              </li>
+              <li>
+                <strong>UAT ≠ Testing</strong> — UAT do business user thực hiện,
+                không phải QA Engineer
+              </li>
+              <li>
+                <strong>MoSCoW W ≠ Loại bỏ</strong> — Won't Have = chưa làm
+                trong release này, không phải vĩnh viễn bỏ
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <blockquote style="font-size: 14px; font-weight: 600; margin-top: 20px">
+          🚀 "BA giỏi thúc đẩy ĐÚNG kết quả bằng cách hỏi ĐÚNG câu hỏi, mời ĐÚNG
+          người và mang lại ĐÚNG giá trị! Chúc bạn phỏng vấn thành công tại
+          NaviWorld!"
+        </blockquote>
+      </div>
+    </div>
+  </body>
+</html>
